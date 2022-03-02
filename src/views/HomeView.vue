@@ -1,7 +1,7 @@
 <template>
   <main>
     <div class="hero min-h-screen principal relative">
-      <div class="hero-overlay bg-opacity-60"></div>
+      <div class="hero-overlay bg-opacity-60 bg-img"></div>
       <div class="text-center hero-content text-neutral-content">
         <div class="max-w-md flex flex-col items-center hover:scale-125 duration-200">
           <a href="/cinema">
@@ -49,6 +49,24 @@
       </div>
         </div>
     </div>
+    <div class="hero min-h-screen object-contain relative header-img">
+      <div class="text-center hero-content text-neutral-content w-full h-full px-0">
+        <div class="flex w-full h-full py-8">
+          <div
+            data-aos="fade-right"
+            data-aos-easing="ease"
+            data-aos-duration="500">
+            <h1 class="text-5xl font-bold">BATMAN</h1>
+            <p class="py-6">Queremos brindarte una experiencia única a la hora de escoger tu película, ven y disfruta!</p>
+          </div>
+          <div  data-aos="fade-left"
+                data-aos-easing="ease"
+                data-aos-duration="500" class="flex justify-end w-full items-end">
+            <button class="btn rounded-xl text-3xl rounded-r-none hover:scale-125 duration-200">RESERVAR AHORA</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="hero min-h-screen bg-pop-100 text-white secondary relative">
       <div class="flex-col hero-content lg:flex-row-reverse justify-between w-full">
         <img data-aos="fade-left"
@@ -87,6 +105,12 @@
 <style scoped lang="css">
 .principal {
   background-image: url("@/assets/images/cinemawelcome.jpg");
+}
+.header-img {
+  background-image: url("@/assets/images/batman.png");
+}
+.bg-img {
+  background-color: #820900bf;
 }
 .secondary {
   background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(117,11,11,1) 36%, rgba(111,10,10,1) 65%, rgba(0,0,0,1) 100%);
