@@ -22,37 +22,38 @@
     <div class="hero min-h-screen bg-black text-white">
       <div class="flex-col hero-content">
       <h1 class="text-5xl font-bold text-white">Cartelera</h1>
-      <div class="w-full carousel rounded-box gap-3 m-8" data-aos="fade-up"
+      <div class="w-full max-w-screen carouser-vertical md:carousel-horizontal carousel rounded-box gap-3 m-8" data-aos="fade-up"
            data-aos-easing="ease"
            data-aos-duration="700">
         <div class="carousel-item" >
-          <img src="https://api.lorem.space/image/movie?w=256&h=400&hash=8B7BCDC2" class="max-w-sm rounded-lg shadow-2xl">
+          <img src="https://api.lorem.space/image/movie?w=256&h=400&hash=8B7BCDC2" class="w-full md:max-w-sm rounded-lg shadow-2xl">
         </div>
         <div class="carousel-item">
-          <img src="https://api.lorem.space/image/movie?w=256&h=400&hash=500B67FB" class="max-w-sm rounded-lg shadow-2xl">
+          <img src="https://api.lorem.space/image/movie?w=256&h=400&hash=500B67FB" class="w-full md:max-w-sm rounded-lg shadow-2xl">
         </div>
         <div class="carousel-item">
-          <img src="https://api.lorem.space/image/movie?w=256&h=400&hash=A89D0DE6" class="max-w-sm rounded-lg shadow-2xl">
+          <img src="https://api.lorem.space/image/movie?w=256&h=400&hash=A89D0DE6" class="w-full md:max-w-sm rounded-lg shadow-2xl">
         </div>
         <div class="carousel-item">
-          <img src="https://api.lorem.space/image/movie?w=256&h=400&hash=225E6693" class="max-w-sm rounded-lg shadow-2xl">
+          <img src="https://api.lorem.space/image/movie?w=256&h=400&hash=225E6693" class="w-full md:max-w-sm rounded-lg shadow-2xl">
         </div>
         <div class="carousel-item">
-          <img src="https://api.lorem.space/image/movie?w=256&h=400&hash=9D9539E7" class="max-w-sm rounded-lg shadow-2xl">
+          <img src="https://api.lorem.space/image/movie?w=256&h=400&hash=9D9539E7" class="w-full md:max-w-sm rounded-lg shadow-2xl">
         </div>
         <div class="carousel-item">
-          <img src="https://api.lorem.space/image/movie?w=256&h=400&hash=BDC01094" class="max-w-sm rounded-lg shadow-2xl">
+          <img src="https://api.lorem.space/image/movie?w=256&h=400&hash=BDC01094" class="w-full md:max-w-sm rounded-lg shadow-2xl">
         </div>
         <div class="carousel-item">
-          <img src="https://api.lorem.space/image/movie?w=256&h=400&hash=7F5AE56A" class="max-w-sm rounded-lg shadow-2xl">
+          <img src="https://api.lorem.space/image/movie?w=256&h=400&hash=7F5AE56A" class="w-full md:max-w-sm rounded-lg shadow-2xl">
         </div>
       </div>
         </div>
     </div>
     <div class="hero min-h-screen object-contain relative header-img">
       <div class="text-center hero-content text-neutral-content w-full h-full px-0">
-        <div class="flex w-full h-full py-8">
+        <div class="flex flex-col w-full h-full py-8 justify-between">
           <div
+            class="flex flex-col md:justify-start w-full items-start px-8"
             data-aos="fade-right"
             data-aos-easing="ease"
             data-aos-duration="500">
@@ -61,8 +62,8 @@
           </div>
           <div  data-aos="fade-left"
                 data-aos-easing="ease"
-                data-aos-duration="500" class="flex justify-end w-full items-end">
-            <button class="btn rounded-xl text-3xl rounded-r-none hover:scale-125 duration-200">RESERVAR AHORA</button>
+                data-aos-duration="500" class="flex md:justify-end w-full items-end px-8">
+            <button class="btn rounded-xl text-3xl md:rounded-r-none hover:scale-125 duration-200">RESERVAR AHORA</button>
           </div>
         </div>
       </div>
