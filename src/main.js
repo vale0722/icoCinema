@@ -6,12 +6,12 @@ import router from "./router";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars,  faTrash, faPen } from '@fortawesome/free-solid-svg-icons';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'animate.css';
 
-library.add(faBars);
+library.add(faBars, faTrash, faPen);
 
 const app = createApp(App);
 
