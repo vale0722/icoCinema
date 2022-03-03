@@ -19,11 +19,12 @@
               <tr>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pelicula</th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sinopsis</th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duración</th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Edad Mínima</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duración</th>
                 <th scope="col" class="relative px-6 py-3">
                   <span class="sr-only">Edit</span>
                    <!-- todo: define if edit movie will be a modal or other route-->
+                   
                 </th>
                 <th scope="col" class="relative px-6 py-3">
                   <span class="sr-only">Delete</span>
@@ -68,26 +69,108 @@
   </div>
   <input type="checkbox" id="addMovie-modal" class="modal-toggle">
   <div class="modal">
-   <div class="modal-box bg-black">
-     <h2 class="font-bold text-lg">Añadir nueva pelicula!</h2>
-     <p class="py-4">Ingrese los datos de la pelicula!</p>
+     
+
      <!-- Hacer formulario para añadir nueva pelicula -->
-     <div class="modal-action">
-      <label for="addMovie-modal" class="btn">Crear</label>
-     </div>
-   </div>
-  </div>
+
+        <div class="relative min-h-screen flex flex-col sm:justify-center items-center ">
+        <div class="relative sm:max-w-sm w-full">
+            <div class="card bg-blue-400 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-6"></div>
+            <div class="card bg-red-400 shadow-lg  w-full h-full rounded-3xl absolute  transform rotate-6"></div>
+            <div class="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-md">
+                <label for="" class="block mt-3 text-lg text-gray-700 text-center font-semibold">
+                    Ingrese los datos de la pelicula
+                </label>
+                <form method="#" action="#" class="mt-10">
+                                    
+                    <div>
+                        <input type="text" placeholder="Nombre" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">
+                    </div>
+        
+                    <div class="mt-7">                
+                        <input type="text" placeholder="Sinopsis" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">                           
+                    </div>
+
+                    <div class="mt-7">   
+                        <input type="number" placeholder="Duracion" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">                           
+                    </div>
+
+                    <div class="mt-7">                
+                        <input type="number" placeholder="Edad minima" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">                           
+                    </div>
+
+                    <div class="mt-7">
+                        <button class="bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                            Crear
+                        </button>
+
+                        <button class="mt-3 bg-blue-400 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                            Salir
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+     <!-- ACA FINALIZA -->
+
+     
+
   <input type="checkbox" id="editMovie-modal" class="modal-toggle">
   <div class="modal">
-   <div class="modal-box bg-black">
-     <h2 class="font-bold text-lg">Editar pelicula!</h2>
-     <p class="py-4">Edite los datos de la pelicula!</p>
+   
      <!-- Hacer formulario para añadir nueva pelicula -->
-     <div class="modal-action">
-      <label for="editMovie-modal" class="btn">Crear</label>
-     </div>
+<div class="modal-box font-sans ">
+        <div class="relative min-h-screen flex flex-col sm:justify-center items-center  ">
+        <div class="relative sm:max-w-sm w-full">
+            <div class="card bg-blue-400 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-6"></div>
+            <div class="card bg-red-400 shadow-lg  w-full h-full rounded-3xl absolute  transform rotate-6"></div>
+            <div class="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-md">
+                <label for="" class="block mt-3 text-lg text-gray-700 text-center font-semibold">
+                    Edite los datos que desea cambiar
+                </label>
+                <form method="#" action="#" class="mt-10">
+                                    
+                    <div>
+                        <input type="text" placeholder="Nombre" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">
+                    </div>
+        
+                    <div class="mt-7">                
+                        <input type="text" placeholder="Sinopsis" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">                           
+                    </div>
+
+                    <div class="mt-7">   
+                        <input type="number" placeholder="Duracion" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">                           
+                    </div>
+
+                    <div class="mt-7">                
+                        <input type="number" placeholder="Edad minima" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">                           
+                    </div>
+
+                    <div class="mt-7">
+                        <button class="bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                            Editar
+                        </button>
+
+                        <button class="mt-3 bg-blue-400 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                            Salir
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+     <!-- ACA FINALIZA -->
+
    </div>
-  </div>
+ 
 
 </template>
 
