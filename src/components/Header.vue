@@ -10,26 +10,26 @@
                   <font-awesome-icon icon="bars"/>
               </label>
             </div>
-            <a class="btn btn-ghost normal-case text-xl">
+            <RouterLink to="/" class="btn btn-ghost normal-case text-xl">
               <img alt="IcoCinema" class="object-contail h-full w-full" src="@/assets/logo.svg" />
-            </a>
+            </RouterLink>
           </div>
           <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal p-0">
-              <li><RouterLink to="/">Item 1</RouterLink></li>
+              <li><RouterLink to="/">Tarifas</RouterLink></li>
               <li class="dropdown dropdown-hover">
-                <label tabindex="0" class="m-1">Hover</label>
+                <label tabindex="0" class="m-1">Películas</label>
                 <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-pop-100 rounded-box w-52 text-gray-900 bg-opacity-60">
                   <li><RouterLink to="/">Item 1</RouterLink></li>
                   <li><RouterLink to="/">Item 2</RouterLink></li>
                 </ul>
               </li>
-              <li><RouterLink to="/">Item 3</RouterLink></li>
+              <li><RouterLink to="/">Administrador</RouterLink></li>
             </ul>
           </div>
           <div class="navbar-end">
             <ul class="menu menu-horizontal p-0">
-              <li><RouterLink to="/">Iniciar Sesión</RouterLink></li>
+              <li><RouterLink to="/login">Iniciar Sesión</RouterLink></li>
             </ul>
           </div>
         </div>
@@ -42,8 +42,9 @@
       <label for="my-drawer" class="drawer-overlay"></label>
       <ul class="menu p-4 overflow-y-auto w-80 bg-black  text-base-content fixed inset-x-0 top-0 h-full shadow-xl">
         <!-- Sidebar content here -->
-        <li><a>Sidebar Item 1</a></li>
-        <li><a>Sidebar Item 2</a></li>
+        <li><a>Peliculas</a></li>
+        <li><a>Tarifas</a></li>
+        <li><a>Contáctenos</a></li>
       </ul>
     </div>
   </div>

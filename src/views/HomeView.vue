@@ -79,7 +79,7 @@
              data-aos-duration="500">
           <h1 class="text-5xl font-bold">¿Cómo Comprar Online?</h1>
           <p class="py-6">Queremos brindarte una experiencia única a la hora de escoger tu película, ven y disfruta!</p>
-          <button class="btn hover:scale-125 duration-200">Ver pasos</button>
+          <label for="my-modal" class="btn hover:scale-125 duration-200">Ver pasos</label>
         </div>
       </div>
     </div>
@@ -101,6 +101,17 @@
       </div>
     </footer>
   </main>
+
+  <input type="checkbox" id="my-modal" class="modal-toggle">
+  <div class="modal">
+    <div class="modal-box">
+      <h3 class="font-bold text-lg">Congratulations random Interner user!</h3>
+      <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+      <div class="modal-action">
+        <label for="my-modal" class="btn">Yay!</label>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped lang="css">
