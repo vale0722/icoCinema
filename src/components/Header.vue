@@ -24,7 +24,7 @@
                   <li><RouterLink to="/">Item 2</RouterLink></li>
                 </ul>
               </li>
-              <li><RouterLink to="/">Administrador</RouterLink></li>
+              <li><RouterLink to="/admin">Administrador</RouterLink></li>
             </ul>
           </div>
           <div class="navbar-end">
