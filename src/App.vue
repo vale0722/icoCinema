@@ -4,13 +4,14 @@
         <component data-aos="fade-right" :is="Component" />
     </RouterView>
   </Header>
+  <Footer></Footer>
 </template>
 
 <script setup>
 import { RouterView } from "vue-router";
 import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 </script>
-
 <style>
 @import "@/assets/styles/base.css";
 </style>

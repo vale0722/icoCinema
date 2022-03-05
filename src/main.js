@@ -10,18 +10,17 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'animate.css';
-
 library.add(faBars);
 
-const app = createApp(App);
+const app = createApp(App).use(createPinia());
 
+import { useHeaderStore } from "./stores/header";
+
+const header = useHeaderStore();
 app.component("font-awesome-icon", FontAwesomeIcon);
-app.use(createPinia());
 app.use(router);
 app.use(AOS.init({
   easing: 'ease-out-back',
   duration: 1000
 }));
-
-
 app.mount("#app");
