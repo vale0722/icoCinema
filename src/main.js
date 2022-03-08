@@ -10,7 +10,7 @@ import {
     faBars,
     faTrash, 
     faPen, 
-    faEye
+    faEye,
     faDesktop,
     faCalendar,
     faCheck,

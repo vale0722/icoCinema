@@ -35,14 +35,15 @@
                 <ul
                   tabindex="0"
                   class="p-2 shadow menu dropdown-content bg-black text-white rounded-box w-52 text-gray-900"
+                  id="header-movies-option"
                 >
-                  <li><RouterLink to="/movies/all">Todas</RouterLink></li>
+                  <li><RouterLink to="/movies/all" class="text-white">Todas</RouterLink></li>
                   <li>
-                    <RouterLink to="/movies/billboard">Cartelera</RouterLink>
+                    <RouterLink to="/movies/billboard" class="text-white">Cartelera</RouterLink>
                   </li>
-                  <li><RouterLink to="/movies">Estrenos</RouterLink></li>
+                  <li><RouterLink to="/movies" class="text-white">Estrenos</RouterLink></li>
                   <li>
-                    <RouterLink to="/movies/coming-soon"
+                    <RouterLink to="/movies/coming-soon" class="text-white"
                       >Próximamente</RouterLink
                     >
                   </li>

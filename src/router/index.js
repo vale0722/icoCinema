@@ -9,6 +9,7 @@ import MovieBillBoardView from "../views/movies/MovieBillBoardView.vue";
 import MovieComingSoonView from "../views/movies/MovieComingSoonView.vue";
 import MovieAllView from "../views/movies/MovieAllView.vue";
 import RatesView from "../views/RatesView.vue";
+import AdminDashBoard from "../views/AdminDashboard.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,6 +58,11 @@ const router = createRouter({
       path: "/login",
       name: "login",
       component: LoginView,
+    },
+    {
+      path: "/admin",
+      name:"Admin",
+      component:AdminDashBoard,
     },
     {
       path: "/admin/movies",
