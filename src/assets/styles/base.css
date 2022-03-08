@@ -61,3 +61,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.header-black {
+  background: linear-gradient(180deg, rgba(111,10,10,1) 29%, rgba(0,0,0,1) 100%);
+}
+
+.secondary {
+  background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(117, 11, 11, 1) 36%,
+          rgba(111, 10, 10, 1) 65%,
+          rgba(0, 0, 0, 1) 100%
+  );
+}
+
+.btn-group>.btn-active, .btn-group>input[type=radio]:checked.btn {
+   border-color: rgba(117, 11, 11, 1);
+   background-color: rgba(117, 11, 11, 1);
+}
