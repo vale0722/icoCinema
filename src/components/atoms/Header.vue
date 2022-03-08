@@ -3,7 +3,11 @@
     <input id="my-drawer" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content !z-auto">
       <div class="fixed inset-x-0 top-0 z-50">
-        <div :class="'navbar text-' + headerStore.color + ' font-bold h-24 bg-opacity-30'">
+        <div
+          :class="
+            'navbar text-' + headerStore.color + ' font-bold h-24 bg-opacity-30'
+          "
+        >
           <div class="navbar-start">
             <div class="dropdown">
               <label
@@ -23,15 +27,25 @@
           </div>
           <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal p-0">
-              <li><RouterLink to="/">Tarifas</RouterLink></li>
+              <li><RouterLink to="/rates">Tarifas</RouterLink></li>
               <li class="dropdown dropdown-hover">
-                <label tabindex="0" class="m-1">Películas</label>
+                <RouterLink to="/movies/" tabindex="0" class="m-1"
+                  >Películas</RouterLink
+                >
                 <ul
                   tabindex="0"
-                  class="p-2 shadow menu dropdown-content bg-pop-100 rounded-box w-52 text-gray-900 bg-opacity-60"
+                  class="p-2 shadow menu dropdown-content bg-black text-white rounded-box w-52 text-gray-900"
                 >
-                  <li><RouterLink to="/">Item 1</RouterLink></li>
-                  <li><RouterLink to="/">Item 2</RouterLink></li>
+                  <li><RouterLink to="/movies/all">Todas</RouterLink></li>
+                  <li>
+                    <RouterLink to="/movies/billboard">Cartelera</RouterLink>
+                  </li>
+                  <li><RouterLink to="/movies">Estrenos</RouterLink></li>
+                  <li>
+                    <RouterLink to="/movies/coming-soon"
+                      >Próximamente</RouterLink
+                    >
+                  </li>
                 </ul>
               </li>
               <li><RouterLink to="/">Administrador</RouterLink></li>
@@ -63,7 +77,7 @@
 </template>
 <script setup>
 import { RouterLink } from "vue-router";
-import { useHeaderStore } from "../stores/header";
+import { useHeaderStore } from "../../stores/header";
 
 let headerStore = useHeaderStore();
 </script>
