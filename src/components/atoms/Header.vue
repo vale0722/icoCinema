@@ -1,5 +1,10 @@
 <template>
-  <div class="drawer">
+  <div v-if="user.isAdmin" class="h-full">
+      <AdminHeader>
+        <slot></slot>
+      </AdminHeader>
+  </div>
+  <div v-else class="drawer">
     <input id="my-drawer" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content !z-auto">
       <div class="fixed inset-x-0 top-0 z-50">
@@ -79,8 +84,11 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import { useHeaderStore } from "../../stores/header";
+import { useUserStore } from "../../stores/user.js";
+import AdminHeader from "./AdminHeader.vue";
 
 let headerStore = useHeaderStore();
+const user = useUserStore();
 </script>
 <style>
 .drawer-toggle ~ .drawer-content,

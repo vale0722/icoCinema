@@ -6,7 +6,7 @@
         <div
           class="
             card
-            bg-blue-400
+            bg-black
             shadow-lg
             w-full
             h-full
@@ -19,7 +19,7 @@
         <div
           class="
             card
-            bg-red-400
+            bg-red-800
             shadow-lg
             w-full
             h-full
@@ -33,7 +33,6 @@
           class="relative w-full rounded-3xl px-6 py-4 bg-gray-100 shadow-md"
         >
           <label
-            for=""
             class="block mt-3 text-lg text-gray-700 text-center font-semibold"
           >
             Ingrese los datos de la pelicula
@@ -120,7 +119,7 @@
             <div class="mt-7">
               <button
                 class="
-                  bg-blue-500
+                  bg-red-800
                   w-full
                   py-3
                   rounded-xl
@@ -143,7 +142,11 @@
                 for="addMovie-modal"
                 class="
                   btn
-                  bg-blue-500
+                  bg-transparent
+                  hover:bg-red-800
+                  hover:bg-opacity-10
+                  text-red-900
+                  border-red-800
                   w-full
                   py-3
                   rounded-xl

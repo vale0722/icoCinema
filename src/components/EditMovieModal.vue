@@ -13,7 +13,7 @@
           <div
             class="
               card
-              bg-blue-400
+              bg-black
               shadow-lg
               w-full
               h-full
@@ -26,7 +26,7 @@
           <div
             class="
               card
-              bg-red-400
+              bg-red-800
               shadow-lg
               w-full
               h-full
@@ -125,7 +125,7 @@
               <div class="mt-7">
                 <button
                   class="
-                    bg-blue-500
+                    bg-red-800
                     w-full
                     py-3
                     rounded-xl
@@ -148,7 +148,11 @@
                   for="editMovie-modal"
                   class="
                     btn
-                    bg-blue-500
+                    bg-transparent
+                    hover:bg-red-800
+                    hover:bg-opacity-10
+                    text-red-900
+                    border-red-800
                     w-full
                     py-3
                     rounded-xl

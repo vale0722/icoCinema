@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import CinemaView from "../views/CinemaView.vue";
 import LoginView from "../views/LoginView.vue";
-import AdminView from "../views/MoviesAdminView.vue";
-import MoviesCategories from "../views/CategoriesAdminView.vue";
+import AdminView from "../views/admin/MoviesAdminView.vue";
+import MoviesCategories from "../views/admin/CategoriesAdminView.vue";
 import MovieNewsView from "../views/movies/MovieNewsView.vue";
 import MovieBillBoardView from "../views/movies/MovieBillBoardView.vue";
 import MovieComingSoonView from "../views/movies/MovieComingSoonView.vue";
@@ -61,18 +61,24 @@ const router = createRouter({
     },
     {
       path: "/admin",
-      name:"Admin",
-      component:AdminDashBoard,
-    },
-    {
-      path: "/admin/movies",
-      name: "Movies",
-      component: AdminView,
-    },
-    {
-      path:"/admin/categories",
-      name:"Categories",
-      component: MoviesCategories,
+      name: "admin",
+      component: AdminDashBoard,
+      children: [
+        {
+          path: "movies",
+          name: "Peliculas",
+          components: {
+            admin: AdminView,
+          },
+        },
+        {
+          path: "categories",
+          name: "Categorias",
+          components: {
+            admin: MoviesCategories,
+          },
+        },
+      ],
     },
     {
       path: "/rates",

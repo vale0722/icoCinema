@@ -1,13 +1,13 @@
 import { defineStore } from "pinia";
 
-export const useHeaderStore = defineStore("user", {
-  state: () => ({ isCustomer: true }),
+export const useUserStore = defineStore("user", {
+  state: () => ({ isAdmin: false }),
   actions: {
     setIsAdmin() {
-      this.isCustomer = false;
+      this.isAdmin = true;
     },
     setIsCustomer() {
-      this.isCustomer = true;
+      this.isAdmin = false;
     },
   },
 });
