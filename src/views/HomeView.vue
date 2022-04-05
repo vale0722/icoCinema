@@ -203,6 +203,10 @@
 
 <script setup>
 import { useHeaderStore } from "../stores/header";
+import { useUserStore } from "../stores/user.js";
+
+const user = useUserStore();
+user.setIsCustomer();
 
 const color = useHeaderStore();
 color.setLight();

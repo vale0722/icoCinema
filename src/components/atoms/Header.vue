@@ -1,5 +1,10 @@
 <template>
-  <div class="drawer">
+  <div v-if="user.isAdmin" class="h-full">
+    <AdminHeader>
+      <slot></slot>
+    </AdminHeader>
+  </div>
+  <div v-else class="drawer">
     <input id="my-drawer" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content !z-auto">
       <div class="fixed inset-x-0 top-0 z-50">
@@ -35,20 +40,31 @@
                 <ul
                   tabindex="0"
                   class="p-2 shadow menu dropdown-content bg-black text-white rounded-box w-52 text-gray-900"
+                  id="header-movies-option"
                 >
-                  <li><RouterLink to="/movies/all">Todas</RouterLink></li>
                   <li>
-                    <RouterLink to="/movies/billboard">Cartelera</RouterLink>
+                    <RouterLink to="/movies/all" class="text-white"
+                      >Todas</RouterLink
+                    >
                   </li>
-                  <li><RouterLink to="/movies">Estrenos</RouterLink></li>
                   <li>
-                    <RouterLink to="/movies/coming-soon"
+                    <RouterLink to="/movies/billboard" class="text-white"
+                      >Cartelera</RouterLink
+                    >
+                  </li>
+                  <li>
+                    <RouterLink to="/movies" class="text-white"
+                      >Estrenos</RouterLink
+                    >
+                  </li>
+                  <li>
+                    <RouterLink to="/movies/coming-soon" class="text-white"
                       >Próximamente</RouterLink
                     >
                   </li>
                 </ul>
               </li>
-              <li><RouterLink to="/">Administrador</RouterLink></li>
+              <li><RouterLink to="/admin">Administrador</RouterLink></li>
             </ul>
           </div>
           <div class="navbar-end">
@@ -78,8 +94,11 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import { useHeaderStore } from "../../stores/header";
+import { useUserStore } from "../../stores/user.js";
+import AdminHeader from "./AdminHeader.vue";
 
 let headerStore = useHeaderStore();
+const user = useUserStore();
 </script>
 <style>
 .drawer-toggle ~ .drawer-content,
