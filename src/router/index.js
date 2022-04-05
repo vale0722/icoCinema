@@ -10,6 +10,8 @@ import MovieComingSoonView from "../views/movies/MovieComingSoonView.vue";
 import MovieAllView from "../views/movies/MovieAllView.vue";
 import RatesView from "../views/RatesView.vue";
 import AdminDashBoard from "../views/AdminDashboard.vue";
+import MovieShowView from "../views/MovieShowView.vue";
+import { needMovie } from "./middleware";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,6 +20,12 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
+    },
+    {
+      path: "/movies/show",
+      name: "movies.show",
+      component: MovieShowView,
+      beforeEnter: [needMovie],
     },
     {
       path: "/movies",
