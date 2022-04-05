@@ -95,22 +95,14 @@
 import AddCategoryModal from "../../components/AddCategoryModal.vue";
 import EditCategoryModal from "../../components/EditCategoryModal.vue";
 import ConfirmDeleteModal from "../../components/ConfirmDeleteModal.vue";
-const categories = [
-  {
-    id: 1,
-    name: "Drama",
-    description: "Peliculas para llorar",
-    createdAt: "04-03-2022",
-    updatedAt: "04-03-2022",
-    image: "https://api.lorem.space/image/movie?w=256&h=400&hash=8B7BCDC2",
-  },
-  {
-    id: 2,
-    name: "Terror",
-    description: "Peliculas que te pondrán los pelos de punta",
-    createdAt: "04-03-2022",
-    updatedAt: "04-03-2022",
-    image: "https://api.lorem.space/image/movie?w=256&h=400&hash=8B7BCDC2",
-  },
-];
+
+import useCategories from "../../use/useCategory";
+import {onMounted} from "vue";
+const categoriesService = useCategories();
+
+onMounted(async () => {
+ await categoriesService.refreshCategories(true);
+ console.log(categoriesService.categories);
+});
+const categories = categoriesService.categories;
 </script>
