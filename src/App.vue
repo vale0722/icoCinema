@@ -10,7 +10,7 @@
 <script setup>
 import { RouterView } from "vue-router";
 import Header from "./components/atoms/Header.vue";
-import Footer from "./components/atoms/Footer.vue";
+import Footer from "./components/atoms/FooterC.vue";
 import { useUserStore } from "./stores/user.js";
 
 let user = useUserStore();

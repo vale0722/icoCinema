@@ -7,36 +7,52 @@
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 gap-16"
     >
       <MovieCard
-        name="Pelicula aleatoria"
-        description="La mejor pelicula del año"
+        :movie="{
+          name: 'Pelicula aleatoria',
+          description: 'La mejor pelicula del año',
+        }"
       ></MovieCard>
       <MovieCard
-        name="Pelicula aleatoria"
-        description="La mejor pelicula del año"
+        :movie="{
+          name: 'Pelicula aleatoria',
+          description: 'La mejor pelicula del año',
+        }"
       ></MovieCard>
       <MovieCard
-        name="Pelicula aleatoria"
-        description="La mejor pelicula del año"
+        :movie="{
+          name: 'Pelicula aleatoria',
+          description: 'La mejor pelicula del año',
+        }"
       ></MovieCard>
       <MovieCard
-        name="Pelicula aleatoria"
-        description="La mejor pelicula del año"
+        :movie="{
+          name: 'Pelicula aleatoria',
+          description: 'La mejor pelicula del año',
+        }"
       ></MovieCard>
       <MovieCard
-        name="Pelicula aleatoria"
-        description="La mejor pelicula del año"
+        :movie="{
+          name: 'Pelicula aleatoria',
+          description: 'La mejor pelicula del año',
+        }"
       ></MovieCard>
       <MovieCard
-        name="Pelicula aleatoria"
-        description="La mejor pelicula del año"
+        :movie="{
+          name: 'Pelicula aleatoria',
+          description: 'La mejor pelicula del año',
+        }"
       ></MovieCard>
       <MovieCard
-        name="Pelicula aleatoria"
-        description="La mejor pelicula del año"
+        :movie="{
+          name: 'Pelicula aleatoria',
+          description: 'La mejor pelicula del año',
+        }"
       ></MovieCard>
       <MovieCard
-        name="Pelicula aleatoria"
-        description="La mejor pelicula del año"
+        :movie="{
+          name: 'Pelicula aleatoria',
+          description: 'La mejor pelicula del año',
+        }"
       ></MovieCard>
     </div>
   </div>

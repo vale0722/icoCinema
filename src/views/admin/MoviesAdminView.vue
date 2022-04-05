@@ -2,65 +2,70 @@
 <template>
   <div class="flex flex-col">
     <ul class="flex flex-row m-5 lg:text-2xl justify-end">
-        <label for="addMovie-modal" class="btn modal-button">Añadir pelicula</label>
-
+      <label for="addMovie-modal" class="btn modal-button"
+        >Añadir pelicula</label
+      >
     </ul>
     <div class="my-2 overflow-x-auto lg:mx-2 max-w-screen">
       <div class="overflow-x-auto w-full text-gray-900">
         <table class="table w-full">
           <thead>
-          <tr>
-            <th class="bg-gray-200"></th>
-            <th class="bg-gray-200">Nombre</th>
-            <th class="bg-gray-200 text-center">Fecha de Creación</th>
-            <th class="bg-gray-200 text-center">Fecha de Actualización</th>
-            <th class="bg-gray-200"></th>
-          </tr>
+            <tr>
+              <th class="bg-gray-200"></th>
+              <th class="bg-gray-200">Nombre</th>
+              <th class="bg-gray-200 text-center">Fecha de Creación</th>
+              <th class="bg-gray-200 text-center">Fecha de Actualización</th>
+              <th class="bg-gray-200"></th>
+            </tr>
           </thead>
           <tbody>
-          <tr v-for="movie in billboard" :key="movie.id">
-            <th class="bg-white h-full w-12">
-              <label class="text-lg">
-                {{ movie.id }}
-              </label>
-            </th>
-            <td>
-              <div class="flex items-center space-x-3">
-                <div class="avatar">
-                  <div class="mask mask-squircle w-12 h-12">
-                    <img :src="movie.image" :alt="movie.name">
+            <tr v-for="movie in billboard" :key="movie.id">
+              <th class="bg-white h-full w-12">
+                <label class="text-lg">
+                  {{ movie.id }}
+                </label>
+              </th>
+              <td>
+                <div class="flex items-center space-x-3">
+                  <div class="avatar">
+                    <div class="mask mask-squircle w-12 h-12">
+                      <img :src="movie.image" :alt="movie.name" />
+                    </div>
+                  </div>
+                  <div>
+                    <div class="font-bold">{{ movie.name }}</div>
+                    <div class="text-sm opacity-50">
+                      {{ movie.description }}
+                    </div>
                   </div>
                 </div>
-                <div>
-                  <div class="font-bold">{{ movie.name }}</div>
-                  <div class="text-sm opacity-50">{{ movie.description }}</div>
+              </td>
+              <td class="text-center">
+                {{ movie.createdAt }}
+              </td>
+              <td class="text-center">{{ movie.updatedAt }}</td>
+              <td>
+                <div class="flex gap-3">
+                  <label
+                    class="text-gray-600 hover:text-gray-900 cursor-pointer"
+                  >
+                    <font-awesome-icon icon="eye" />
+                  </label>
+                  <label
+                    for="editMovie-modal"
+                    class="text-gray-600 hover:text-gray-900 cursor-pointer"
+                  >
+                    <font-awesome-icon icon="pen" />
+                  </label>
+                  <label
+                    for="confirmDelete-modal"
+                    class="text-gray-600 hover:text-gray-900 cursor-pointer"
+                  >
+                    <font-awesome-icon icon="trash" />
+                  </label>
                 </div>
-              </div>
-            </td>
-            <td class="text-center">
-              {{ movie.createdAt }}
-            </td>
-            <td class="text-center">{{ movie.updatedAt }}</td>
-            <td>
-               <div class="flex gap-3">
-                 <label class="text-gray-600 hover:text-gray-900 cursor-pointer">
-                   <font-awesome-icon icon="eye" />
-                 </label>
-                 <label
-                   for="editMovie-modal"
-                   class="text-gray-600 hover:text-gray-900 cursor-pointer"
-                 >
-                   <font-awesome-icon icon="pen" />
-                 </label>
-                 <label
-                   for="confirmDelete-modal"
-                   class="text-gray-600 hover:text-gray-900 cursor-pointer"
-                 >
-                   <font-awesome-icon icon="trash" />
-                 </label>
-               </div>
-            </td>
-          </tr>
+              </td>
+            </tr>
           </tbody>
         </table>
         <div class="w-full flex justify-center py-4">
@@ -75,12 +80,12 @@
     </div>
   </div>
 
-  <input type="checkbox" id="addMovie-modal" class="modal-toggle">
+  <input type="checkbox" id="addMovie-modal" class="modal-toggle" />
   <label for="addMovie-modal" class="modal cursor-pointer">
     <AddMovieModal />
   </label>
 
-  <input type="checkbox" id="editMovie-modal" class="modal-toggle">
+  <input type="checkbox" id="editMovie-modal" class="modal-toggle" />
   <label for="editMovie-modal" class="modal cursor-pointer">
     <EditMovieModal />
   </label>

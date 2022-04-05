@@ -1,9 +1,9 @@
 <template>
-    <RouterView name="admin" v-slot="{ Component }">
-      <AdminTemplate :title="$route.name">
-        <component data-aos="fade-right" :is="Component" />
-      </AdminTemplate>
-    </RouterView>
+  <RouterView name="admin" v-slot="{ Component }">
+    <AdminTemplate :title="$route.name">
+      <component data-aos="fade-right" :is="Component" />
+    </AdminTemplate>
+  </RouterView>
 </template>
 
 <script setup>
