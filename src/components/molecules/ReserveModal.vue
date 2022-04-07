@@ -29,7 +29,9 @@
               >
 
                 <option selected>Seleccione una opción</option>
-                <option>2022-12-12</option>
+                <template v-for="show in movie.shows" :key="show.id">
+                  <option :value="show.id">{{ show.show_day + ' ' + show.show_hour }}</option>
+                </template>
               </select>
             </div>
           </div>
