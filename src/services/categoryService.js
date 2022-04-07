@@ -1,15 +1,13 @@
 import { assembler } from "./modelServiceAssembler";
-import {all, one} from "./icoCinemaAssembler";
+import { all, destroy, one } from "./icoCinemaAssembler";
 
-const URL = 'genre'
+const URL = "genre";
 
 const categoriesService = assembler(URL);
 categoriesService.all = all(URL);
-
-const categoryService = assembler(URL);
-categoryService.one = one(URL)
+categoriesService.one = one(URL);
+categoriesService.delete = destroy(URL)
 
 export {
-    categoriesService,
-    categoryService
+    categoriesService
 };

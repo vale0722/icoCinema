@@ -4,8 +4,8 @@
     @dragleave.prevent="toggle_active()"
     @dragover.prevent
     @drop.prevent="drop"
-    :class="{ 'bg-green-100 border-green-300 dark:bg-green-700': dragActive }"
-    class="flex items-center justify-center w-full px-12 py-8 border-4 border-gray-300 border-dashed rounded dark:border-2"
+    :class="{ 'bg-gray-100 border-gray-300': dragActive }"
+    class="flex items-center justify-center text-gray-900 w-full px-12 py-8 border-4 border-gray-300 border-dashed rounded dark:border-2"
   >
     <div class="flex flex-col items-center justify-center gap-2 text-gray-500">
       <span>
@@ -24,21 +24,19 @@
           />
         </svg>
       </span>
-      <p class="text-base md:text-xl font-semibold">Drag a file here</p>
+      <p class="text-base md:text-xl font-semibold">Arrastra una imagen aquí</p>
       <p class="text-xs md:text-sm font-semibold dark:text-gray-400">
-        Or if you prefer
+        o simplemente
       </p>
       <!-- File input -->
       <label
         for="file"
         class="p-2 text-xs md:text-sm font-semibold leading-tight text-gray-600 bg-red-700 border rounded cursor-pointer hover:bg-red-800 hover:shadow-sm"
       >
-        <span class="text-red-500 dark:text-gray-100"
-          >Select a file from your device</span
-        >
+        <span class="text-red-500 dark:text-gray-100">Selecciona un archivo</span>
         <input
           type="file"
-          @change="selectedFile"
+          @change="selected"
           name="file"
           id="file"
           class="hidden"
@@ -47,7 +45,7 @@
       <!-- Dropped file info -->
       <div
         v-if="droppedFile !== null"
-        class="flex flex-wrap items-center justify-center gap-2 text-base font-semibold text-gray-600 dark:text-gray-100"
+        class="flex flex-wrap items-center justify-center gap-2 text-base font-semibold text-gray-600"
       >
         <span class="text-xs md:text-sm">File: {{ droppedFile.name }}</span>
         <button
@@ -75,14 +73,34 @@
     </div>
   </div>
 </template>
-<script setup>
+<script>
 import useDropZone from "../services/dropZone.js";
-const {
-  dragActive,
-  droppedFile,
-  toggle_active,
-  drop,
-  clearDropped,
-  selectedFile,
-} = useDropZone();
+
+export default {
+  setup(props, computed) {
+    const {
+      dragActive,
+      droppedFile,
+      toggle_active,
+      drop,
+      clearDropped,
+      selectedFile,
+    } = useDropZone();
+
+    const selected = (value) => {
+      selectedFile(value);
+      computed.emit("input", droppedFile);
+    };
+
+    return {
+      dragActive,
+      droppedFile,
+      toggle_active,
+      drop,
+      clearDropped,
+      selectedFile,
+      selected,
+    };
+  }
+}
 </script>

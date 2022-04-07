@@ -47,21 +47,6 @@
                       >Todas</RouterLink
                     >
                   </li>
-                  <li>
-                    <RouterLink to="/movies/billboard" class="text-white"
-                      >Cartelera</RouterLink
-                    >
-                  </li>
-                  <li>
-                    <RouterLink to="/movies" class="text-white"
-                      >Estrenos</RouterLink
-                    >
-                  </li>
-                  <li>
-                    <RouterLink to="/movies/coming-soon" class="text-white"
-                      >Próximamente</RouterLink
-                    >
-                  </li>
                 </ul>
               </li>
               <li><RouterLink to="/admin">Administrador</RouterLink></li>

@@ -23,24 +23,13 @@
               : ' h-72 group-hover:opacity-40 transition-opacity duration-700 ') +
             'w-56'
           "
-          src="https://api.lorem.space/image/movie?w=260&h=400"
+          :src="movie.formatImage"
         />
         <div
           v-if="withTab"
           class="absolute bg-black flex items-center group-hover:-top-0 group-hover:opacity-100 duration-700 top-full right-0 w-full opacity-0 h-1/2 transition-all"
         >
-          <div
-            style="
-              background-image: url('https://api.lorem.space/image/movie?w=260&h=400');
-            "
-          >
-            <video class="w-full" autoplay loop="" preload="none" muted="muted">
-              <source
-                src="https://cdn.cloudflare.steamstatic.com/steam/apps/256860783/microtrailer.webm?t=1637095595?v=3"
-                type="video/webm"
-              />
-            </video>
-          </div>
+          <iframe class="w-full h-full" :src="movie.thriller + '?controls=0&autoplay=1&mute=1&loop=1'" />
         </div>
         <div
           v-if="withTab"
@@ -48,7 +37,7 @@
         >
           <div class="py-4 text-xs px-7">
             <div class="text-xl font-bold">{{ movie.name }}</div>
-            <div class="overflow-hidden overflow-ellipsis relative z-20">
+            <div class="overflow-hidden overflow-ellipsis truncate relative z-20">
               {{ movie.description }}
             </div>
           </div>

@@ -15,46 +15,63 @@
         >
           Edite los datos de la categoría
         </label>
-        <form method="#" action="#" class="mt-10">
+        <div class="mt-10">
           <div>
             <input
               type="text"
               placeholder="Nombre"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+              v-model="name"
+              class="mt-1 block w-full border-none bg-gray-100 text-gray-800 h-11 rounded-xl shadow-lg focus:ring-0 px-2"
             />
           </div>
 
           <div class="mt-7">
-            <input
-              type="text"
-              placeholder="Descripción"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-            />
-          </div>
-
-          <DropZone class="mt-3" />
-
-          <div class="mt-7">
-            <button
-              class="bg-red-800 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105"
+            <label
+              for="editCategory-modal"
+              @click="update"
+              class="btn bg-red-800 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105"
             >
-              Guardar
-            </button>
+              Editar
+            </label>
           </div>
           <div class="modal-action">
             <label
-              for="editCategorie-modal"
+              for="editCategory-modal"
               class="btn bg-transparent hover:bg-red-800 hover:bg-opacity-10 text-red-900 border-red-800 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105"
             >
               Regresar
             </label>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
-import DropZone from "../components/DropZone.vue";
+<script>
+import { useCategoriesStore } from "../stores/categories";
+import { storeToRefs } from "pinia/dist/pinia";
+import { ref, watch } from "vue";
+
+export default {
+  setup(props, computed) {
+    const categoryStore = useCategoriesStore();
+    const { category } = storeToRefs(categoryStore);
+    const { updateCategory } = categoryStore;
+    let name = ref("");
+
+    watch(category, () => {
+      name.value = category.value.name;
+    });
+
+    const update = async () => {
+      await updateCategory(category.value, {
+        name: name.value,
+      });
+      computed.emit("updated");
+    };
+
+    return { category, update, name };
+  },
+};
 </script>

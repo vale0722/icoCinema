@@ -1,20 +1,9 @@
 <template>
   <main class="min-h-screen">
     <div class="indicator w-full h-full">
-      <div class="group overflow-hidden relative shadow-lg h-screen w-full">
-        <label href="#" class="absolute z-10 top-0 bottom-0 left-0 right-0">
-          <video
-            class="w-full h-full"
-            autoplay
-            loop=""
-            preload="none"
-            muted="muted"
-          >
-            <source
-              src="https://cdn.cloudflare.steamstatic.com/steam/apps/256860783/microtrailer.webm?t=1637095595?v=3"
-              type="video/webm"
-            />
-          </video>
+      <div class="group overflow-hidden relative shadow-lg min-h-screen w-full">
+        <label class="absolute z-10 top-0 bottom-0 left-0 right-0">
+          <iframe class="w-full h-full hidden md:block" :src="movieActive.thriller + '?controls=0&autoplay=1&mute=1'" />
           <div
             class="absolute bg-opacity-70 bg-black text-white block left-0 right-0 top-0 text-base h-full w-full transition-all"
           >
@@ -67,7 +56,7 @@
                           <div
                             class="badge badge-error bg-red-700 text-white gap-2"
                           >
-                            Comedia
+                            {{ movieActive.category }}
                           </div>
                         </div>
                         <div class="flex flex-col overview">
@@ -77,42 +66,43 @@
                             {{ movieActive.description }}
                           </p>
                         </div>
-                        <div class="flex flex-row justify-between pr-8 my-10">
+
+                        <div class="flex justify-between pr-8 my-10 w-1/2">
                           <div class="flex flex-col">
-                            <div class="text-xl font-bold text-white">
-                              440.052
+                            <div class="text-sm font-bold text-white">
+                              {{ movieActive.min_age + " Años"}}
                             </div>
-                            <div class="text-sm text-gray-400">Popularidad</div>
+                            <div class="text-sm text-gray-400">Edad Minima</div>
                           </div>
                           <div class="flex flex-col">
-                            <div class="text-xl font-bold text-white">
-                              2022-04-05
+                            <div class="text-sm font-bold text-white">
+                              {{ movieActive.release_date }}
                             </div>
                             <div class="text-sm text-gray-400">
                               Fecha de lanzamiento
                             </div>
                           </div>
                           <div class="flex flex-col">
-                            <div class="text-xl font-bold text-white">
-                              80 min
+                            <div class="text-sm font-bold text-white">
+                              {{ movieActive.duration }} min
                             </div>
                             <div class="text-sm text-gray-400">Tiempo</div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="flex flex-row relative pb-10 space-x-4 z-10">
-                      <label
-                        for="reserve-modal"
-                        class="flex items-center py-2 px-4 rounded-full mx-auto text-white bg-red-700 hover:bg-red-800"
-                        data-unsp-sanitized="clean"
-                      >
-                        <font-awesome-icon icon="clock" />
-                        <div class="text-sm text-white ml-2">
-                          Reservar ahora
-                        </div>
-                      </label>
-                    </div>
+                      <div class="flex flex-row relative pb-10 space-x-4 z-10">
+                        <label
+                          for="reserve-modal"
+                          class="flex items-center self-center py-2 px-4 rounded-full mx-auto text-white bg-red-700 hover:bg-red-800"
+                          data-unsp-sanitized="clean"
+                        >
+                          <font-awesome-icon icon="clock" />
+                          <div class="text-sm text-white ml-2">
+                            Reservar ahora
+                          </div>
+                        </label>
+                      </div>
                   </div>
                 </div>
               </div>

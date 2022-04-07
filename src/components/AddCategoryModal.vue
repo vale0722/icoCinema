@@ -11,36 +11,28 @@
       ></div>
       <div class="relative w-full rounded-3xl px-6 py-4 bg-gray-100 shadow-md">
         <label
-          for=""
           class="block mt-3 text-lg text-gray-700 text-center font-semibold"
         >
           Ingrese los datos de la categoría
         </label>
-        <form method="#" action="#" class="mt-10">
+        <div class="mt-10">
           <div>
             <input
               type="text"
               placeholder="Nombre"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+              v-model="name"
+              class="mt-1 block w-full border-none bg-gray-100 text-gray-800 h-11 rounded-xl shadow-lg focus:ring-0 px-2"
             />
           </div>
 
           <div class="mt-7">
-            <input
-              type="text"
-              placeholder="Descripción"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-            />
-          </div>
-
-          <DropZone class="mt-3" />
-
-          <div class="mt-7">
-            <button
-              class="bg-red-800 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105"
+            <label
+              for="addCategory-modal"
+              @click="create"
+              class="btn bg-red-800 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105"
             >
               Crear
-            </button>
+            </label>
           </div>
           <div class="modal-action">
             <label
@@ -50,12 +42,29 @@
               Regresar
             </label>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
-import DropZone from "../components/DropZone.vue";
+<script>
+import { useCategoriesStore } from "../stores/categories";
+import { ref } from "vue";
+
+export default {
+  setup(props, computed) {
+    const { storeCategory } = useCategoriesStore();
+    let name = ref("");
+
+    const create = async () => {
+      const form = new FormData();
+      form.append("name", name.value);
+      await storeCategory(form);
+      computed.emit('created')
+    };
+
+    return { name, create };
+  },
+}
 </script>

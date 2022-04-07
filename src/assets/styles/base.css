@@ -79,3 +79,7 @@ body {
    border-color: rgba(117, 11, 11, 1);
    background-color: rgba(117, 11, 11, 1);
 }
+
+.table :where(tbody th, tbody td) {
+  background-color: white;
+}

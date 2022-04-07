@@ -34,28 +34,28 @@ const router = createRouter({
       children: [
         {
           path: "",
-          name: "news",
+          name: "Nuevas",
           components: {
             movies: MovieNewsView,
           },
         },
         {
           path: "billboard",
-          name: "billboard",
+          name: "Cartelera",
           components: {
             movies: MovieBillBoardView,
           },
         },
         {
           path: "coming-soon",
-          name: "coming-soon",
+          name: "Proximamente",
           components: {
             movies: MovieComingSoonView,
           },
         },
         {
           path: "all",
-          name: "all",
+          name: "Todas",
           components: {
             movies: MovieAllView,
           },

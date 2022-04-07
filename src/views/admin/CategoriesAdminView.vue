@@ -10,7 +10,6 @@
         <table class="table w-full">
           <thead>
             <tr>
-              <th class="bg-gray-200"></th>
               <th class="bg-gray-200">Categoría</th>
               <th class="bg-gray-200 text-center">Fecha de Creación</th>
               <th class="bg-gray-200 text-center">Fecha de Actualización</th>
@@ -18,23 +17,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="category in categories" :key="category.id">
-              <th class="bg-white h-full w-12">
-                <label class="text-lg">
-                  {{ category.id }}
-                </label>
-              </th>
+            <tr v-for="category in categoriesRef" :key="category.id">
               <td>
-                <div class="flex items-center space-x-3">
-                  <div class="avatar">
-                    <div class="mask mask-squircle w-12 h-12">
-                      <img :src="category.image" :alt="category.name" />
-                    </div>
-                  </div>
-                  <div>
-                    <div class="font-bold">{{ category.name }}</div>
-                  </div>
-                </div>
+                <div class="font-bold">{{ category.name }}</div>
               </td>
               <td class="text-center">
                 {{ category.createdAt }}
@@ -49,12 +34,14 @@
                   </label>
                   <label
                     for="editCategory-modal"
+                    @click="setCategory(category)"
                     class="text-gray-600 hover:text-gray-900 cursor-pointer"
                   >
                     <font-awesome-icon icon="pen" />
                   </label>
                   <label
                     for="confirmDelete-modal"
+                    @click="setCategory(category)"
                     class="text-gray-600 hover:text-gray-900 cursor-pointer"
                   >
                     <font-awesome-icon icon="trash" />
@@ -64,32 +51,24 @@
             </tr>
           </tbody>
         </table>
-        <div class="w-full flex justify-center py-4">
-          <div class="btn-group">
-            <button class="btn btn-sm">1</button>
-            <button class="btn btn-sm btn-active">2</button>
-            <button class="btn btn-sm">3</button>
-            <button class="btn btn-sm">4</button>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 
   <!-- Put this part before </body> tag -->
   <input type="checkbox" id="addCategory-modal" class="modal-toggle" />
-  <label for="addCategory-modal" class="modal cursor-pointer">
-    <AddCategoryModal />
+  <label class="modal">
+    <AddCategoryModal @created="refresh(true)" />
   </label>
 
   <input type="checkbox" id="editCategory-modal" class="modal-toggle" />
   <label for="editCategory-modal" class="modal cursor-pointer">
-    <EditCategoryModal />
+    <EditCategoryModal @updated="refresh(true)" />
   </label>
 
   <input type="checkbox" id="confirmDelete-modal" class="modal-toggle" />
   <label for="confirmDelete-modal" class="modal cursor-pointer">
-    <ConfirmDeleteModal />
+    <ConfirmDeleteModal @deleted="refresh(true)" />
   </label>
 </template>
 
@@ -97,14 +76,18 @@
 import AddCategoryModal from "../../components/AddCategoryModal.vue";
 import EditCategoryModal from "../../components/EditCategoryModal.vue";
 import ConfirmDeleteModal from "../../components/ConfirmDeleteModal.vue";
+import { onMounted, ref } from "vue";
+import { useCategoriesStore } from "../../stores/categories";
+const { categories, refreshCategories, setCategoryActive } = useCategoriesStore();
+let categoriesRef = ref(categories);
 
-import useCategories from "../../use/useCategory";
-import {onMounted} from "vue";
-const categoriesService = useCategories();
+const refresh = async (force) => {
+  categoriesRef.value = await refreshCategories(force);
+};
+
+const setCategory = async (category) => await setCategoryActive(category);
 
 onMounted(async () => {
- await categoriesService.refreshCategories(true);
- console.log(categoriesService.categories);
+   await refresh();
 });
-const categories = categoriesService.categories;
 </script>

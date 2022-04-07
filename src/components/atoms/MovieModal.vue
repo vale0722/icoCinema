@@ -8,7 +8,7 @@
       >
       <iframe
         class="h-full w-full"
-        src="https://www.youtube.com/embed/JRVD-pndqY0"
+        :src="movie.thriller"
         allow="autoplay; encrypted-media"
         allowfullscreen
         title="video"

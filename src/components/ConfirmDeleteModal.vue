@@ -20,11 +20,13 @@
             Está seguro que desea borrar?
           </h2>
           <div class="mt-7">
-            <button
-              class="bg-red-800 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105"
+            <label
+              for="confirmDelete-modal"
+              @click="destroy"
+              class="btn bg-red-800 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105"
             >
               Sí, Borrar
-            </button>
+            </label>
           </div>
           <div class="modal-action">
             <label
@@ -39,3 +41,22 @@
     </div>
   </div>
 </template>
+<script>
+import { useCategoriesStore } from "../stores/categories";
+import { storeToRefs } from "pinia/dist/pinia";
+
+export default {
+  setup(props, computed) {
+    const categoryStore = useCategoriesStore();
+    const { category } = storeToRefs(categoryStore);
+    const { deleteCategory } = categoryStore;
+
+    const destroy = async () => {
+      await deleteCategory(category.value);
+      computed.emit("deleted");
+    };
+
+    return { category, destroy };
+  },
+};
+</script>
