@@ -25,6 +25,7 @@
           <li><RouterLink to="/admin">Admin</RouterLink></li>
           <li><RouterLink to="/admin/categories">Categorias</RouterLink></li>
           <li><RouterLink to="/admin/movies">Peliculas</RouterLink></li>
+          <li><RouterLink to="/admin/shows">Funciones</RouterLink></li>
         </ul>
       </div>
       <RouterLink to="/" class="btn btn-ghost normal-case text-xl">
@@ -40,6 +41,7 @@
         <li><RouterLink to="/admin">Admin</RouterLink></li>
         <li><RouterLink to="/admin/categories">Categorias</RouterLink></li>
         <li><RouterLink to="/admin/movies">Peliculas</RouterLink></li>
+        <li><RouterLink to="/admin/shows">Funciones</RouterLink></li>
       </div>
     </div>
     <div class="navbar-end">
