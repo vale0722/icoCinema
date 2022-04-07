@@ -3,14 +3,14 @@
     <div
       class="header-black flex flex-col md:flex-row justify-center aling-center gap-5 text-gray-900 min-h-48 p-4 pt-32"
     >
-      <RouterLink class="btn btn-error" to="/movies">Estrenos</RouterLink>
-      <RouterLink class="btn btn-error" to="/movies/billboard"
+      <RouterLink class="btn btn-error border-red-800 bg-red-800 hover:bg-red-900 text-white" to="/movies">Estrenos</RouterLink>
+      <RouterLink class="btn btn-error border-red-800 bg-red-800 hover:bg-red-900 text-white" to="/movies/billboard"
         >Cartelera</RouterLink
       >
-      <RouterLink class="btn btn-error" to="/movies/coming-soon"
+      <RouterLink class="btn btn-error border-red-800 bg-red-800 hover:bg-red-900 text-white" to="/movies/coming-soon"
         >Próximamente</RouterLink
       >
-      <RouterLink class="btn btn-error" to="/movies/all">Ver todas</RouterLink>
+      <RouterLink class="btn btn-error border-red-800 bg-red-800 hover:bg-red-900 text-white" to="/movies/all">Ver todas</RouterLink>
     </div>
     <div class="flex justify-center">
       <RouterView name="movies" v-slot="{ Component }">
