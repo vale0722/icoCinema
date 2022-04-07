@@ -84,7 +84,7 @@ const router = createRouter({
       children: [
         {
           path: "",
-          name: "Admin",
+          name: "admin",
           components: {
             admin: AdminView,
           },

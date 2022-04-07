@@ -75,11 +75,6 @@
     <AddMovieModal @created="refresh(true)" />
   </label>
 
-  <input type="checkbox" id="editMovie-modal" class="modal-toggle" />
-  <label class="modal cursor-pointer">
-    <EditMovieModal @updated="refresh(true)" />
-  </label>
-
   <input type="checkbox" id="confirmDelete-modal" class="modal-toggle" />
   <label class="modal cursor-pointer">
     <ConfirmDeleteModal @deleted="refresh(true)" />
@@ -88,7 +83,6 @@
 
 <script setup>
 import AddMovieModal from "../../components/AddMovieModal.vue";
-import EditMovieModal from "../../components/EditMovieModal.vue";
 import ConfirmDeleteModal from "../../components/ConfirmDeleteModal.vue";
 import { onMounted } from "vue";
 import { useMoviesStore } from "../../stores/movies";

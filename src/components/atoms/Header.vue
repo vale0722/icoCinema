@@ -4,7 +4,7 @@
       <slot></slot>
     </AdminHeader>
   </div>
-  <div v-else class="drawer">
+  <div v-else>
     <input id="my-drawer" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content !z-auto">
       <div class="fixed inset-x-0 top-0 z-50">

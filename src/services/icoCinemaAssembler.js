@@ -2,7 +2,6 @@ import axios from "axios";
 
 export const service = axios.create({
   baseURL: `${import.meta.env.VITE_APP_URL_ICO_API}/api`,
-  headers: { "content-type": "multipart/form-data" },
 });
 
 export const _updateAuth = (id) => (service.defaults.headers.Authorization = 'Bearer ' + id);
@@ -20,7 +19,9 @@ export const one = (url) => (id, scope) =>
     .then((response) => handleResponse(response, scope));
 
 export const create = (url) => (body, scope) =>
-  service.post(url, body).then((response) => handleResponse(response, scope));
+  service.post(url, body, {
+    headers: { "content-type": "multipart/form-data" },
+  }).then((response) => handleResponse(response, scope));
 
 export const update = (url) => (id, body, scope) =>
   service

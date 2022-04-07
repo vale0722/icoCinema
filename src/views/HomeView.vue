@@ -144,61 +144,61 @@
         </div>
       </div>
     </div>
-  </main>
 
-  <input type="checkbox" id="my-modal" class="modal-toggle" />
-  <div class="modal">
-    <div class="modal-box text-white bg-black p-16 mx-auto !max-w-2xl">
-      <div class="flex justify-between gap-4">
-        <h2 class="text-xl font-bold pb-8">¿Cómo Comprar Online?</h2>
-        <label for="my-modal"
+    <input type="checkbox" id="my-modal" class="modal-toggle" />
+    <div class="modal">
+      <div class="modal-box text-white bg-black p-16 mx-auto !max-w-2xl">
+        <div class="flex justify-between gap-4">
+          <h2 class="text-xl font-bold pb-8">¿Cómo Comprar Online?</h2>
+          <label for="my-modal"
           ><font-awesome-icon class="text-3xl" icon="times"
-        /></label>
-      </div>
-      <div class="grid md:grid-cols-5 gap-8">
-        <div
-          data-aos="zoom-in-down"
-          class="flex flex-col justify-between items-center text-center gap-2 hover:scale-105 duration-200"
-        >
-          <div class="text-xl">1</div>
-          <font-awesome-icon class="text-5xl" icon="desktop" />
-          <p>Escoger<br />Película</p>
+          /></label>
         </div>
-        <div
-          data-aos="zoom-in-down"
-          class="flex flex-col justify-between items-center text-center gap-2 hover:scale-105 duration-200"
-        >
-          <div class="text-xl">2</div>
-          <font-awesome-icon class="text-5xl" icon="calendar" />
-          <p>Elegir día<br />Y hora</p>
-        </div>
-        <div
-          data-aos="zoom-in-down"
-          class="flex flex-col justify-between items-center text-center gap-2 hover:scale-105 duration-200"
-        >
-          <div class="text-xl">3</div>
-          <font-awesome-icon class="text-5xl" icon="check" />
-          <p>Registrarse</p>
-        </div>
-        <div
-          data-aos="zoom-in-down"
-          class="flex flex-col justify-between items-center text-center gap-2 hover:scale-105 duration-200"
-        >
-          <div class="text-xl">4</div>
-          <font-awesome-icon class="text-5xl" icon="chair" />
-          <p>Escoger<br />Silla</p>
-        </div>
-        <div
-          data-aos="zoom-in-down"
-          class="flex flex-col justify-between items-center text-center gap-2 hover:scale-105 duration-200"
-        >
-          <div class="text-xl">5</div>
-          <font-awesome-icon class="text-5xl" icon="qrcode" />
-          <p>Mostrar Qr</p>
+        <div class="grid md:grid-cols-5 gap-8">
+          <div
+            data-aos="zoom-in-down"
+            class="flex flex-col justify-between items-center text-center gap-2 hover:scale-105 duration-200"
+          >
+            <div class="text-xl">1</div>
+            <font-awesome-icon class="text-5xl" icon="desktop" />
+            <p>Escoger<br />Película</p>
+          </div>
+          <div
+            data-aos="zoom-in-down"
+            class="flex flex-col justify-between items-center text-center gap-2 hover:scale-105 duration-200"
+          >
+            <div class="text-xl">2</div>
+            <font-awesome-icon class="text-5xl" icon="calendar" />
+            <p>Elegir día<br />Y hora</p>
+          </div>
+          <div
+            data-aos="zoom-in-down"
+            class="flex flex-col justify-between items-center text-center gap-2 hover:scale-105 duration-200"
+          >
+            <div class="text-xl">3</div>
+            <font-awesome-icon class="text-5xl" icon="check" />
+            <p>Registrarse</p>
+          </div>
+          <div
+            data-aos="zoom-in-down"
+            class="flex flex-col justify-between items-center text-center gap-2 hover:scale-105 duration-200"
+          >
+            <div class="text-xl">4</div>
+            <font-awesome-icon class="text-5xl" icon="chair" />
+            <p>Escoger<br />Silla</p>
+          </div>
+          <div
+            data-aos="zoom-in-down"
+            class="flex flex-col justify-between items-center text-center gap-2 hover:scale-105 duration-200"
+          >
+            <div class="text-xl">5</div>
+            <font-awesome-icon class="text-5xl" icon="qrcode" />
+            <p>Mostrar Qr</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup>
