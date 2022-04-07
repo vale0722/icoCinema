@@ -21,7 +21,7 @@
         <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
       </div>
       <div class="w-full py-6 z-20">
-        <h1 class="my-6 text-3xl font-bold">Inicia Sesión</h1>
+        <h1 class="my-6 text-3xl font-bold">Registrate</h1>
         <div class="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
           <div class="form-control">
             <label class="label">
@@ -32,6 +32,17 @@
               placeholder="Correo electronico"
               class="input input-bordered"
               v-model="email"
+            />
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Nombre</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Nombre"
+              class="input input-bordered"
+              v-model="name"
             />
           </div>
           <div class="form-control">
@@ -108,15 +119,17 @@ import { ref } from "vue";
 import { useUserStore } from "../stores/user";
 
 const userStore = useUserStore();
-const { loginUser } = userStore;
+const { registerUser } = userStore;
 const email = ref("");
+const name = ref("");
 const password = ref("");
 
 const login = async () => {
   const form = new FormData();
   form.append("email", email.value);
+  form.append("name", name.value);
   form.append("password", password.value);
-  await loginUser(form);
+  await registerUser(form);
 };
 </script>
 

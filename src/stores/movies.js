@@ -18,6 +18,13 @@ export const useMoviesStore = defineStore("movies", {
 
       return this.movies;
     },
+    async refreshGuestMovies(force) {
+      if (!this.movies.length || force) {
+        this.movies = await moviesService.guest();
+      }
+
+      return this.movies;
+    },
     async storeMovie(attributes) {
       try {
         await moviesService.create(attributes);

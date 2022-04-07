@@ -22,28 +22,9 @@
           tabindex="0"
           class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white text-gray-900 rounded-box w-52"
         >
-          <li><a>Item 1</a></li>
-          <li tabindex="0">
-            <a class="justify-between">
-              Parent
-              <svg
-                class="fill-current"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-                />
-              </svg>
-            </a>
-            <ul class="p-2 bg-white text-gray-900 shadow-xl">
-              <li><a>Submenu 1</a></li>
-              <li><a>Submenu 2</a></li>
-            </ul>
-          </li>
-          <li><a>Item 3</a></li>
+          <li><RouterLink to="/admin">Admin</RouterLink></li>
+          <li><RouterLink to="/admin/categories">Categorias</RouterLink></li>
+          <li><RouterLink to="/admin/movies">Peliculas</RouterLink></li>
         </ul>
       </div>
       <RouterLink to="/" class="btn btn-ghost normal-case text-xl">
@@ -74,11 +55,11 @@
         >
           <li>
             <a class="justify-between">
-              Perfil
+              {{ auth ? auth.user.name : "" }}
               <span class="badge">Nuevo</span>
             </a>
           </li>
-          <li><RouterLink to="/">Cerrar Sesión</RouterLink></li>
+          <li><button @click="logout">Cerrar Sesión</button></li>
         </ul>
       </div>
     </div>
@@ -87,6 +68,16 @@
 </template>
 <script setup>
 import { RouterLink } from "vue-router";
+import { useUserStore } from "../../stores/user";
+import { storeToRefs } from "pinia/dist/pinia";
+
+const userStore = useUserStore();
+const { auth } = storeToRefs(userStore);
+const { logoutUser } = userStore;
+
+const logout = async () => {
+  await logoutUser();
+};
 </script>
 <style>
 .drawer-toggle ~ .drawer-content,

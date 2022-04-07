@@ -22,10 +22,10 @@ import { storeToRefs } from "pinia/dist/pinia";
 import MovieCard from "../../components/atoms/MovieCard.vue";
 const moviesStore = useMoviesStore();
 const { movies } = storeToRefs(moviesStore);
-const { refreshMovies } = moviesStore;
+const { refreshGuestMovies } = moviesStore;
 
 const refresh = async (force) => {
-  movies.value = await refreshMovies(force);
+  movies.value = await refreshGuestMovies(force);
 };
 
 const getMovie = (movie) => {

@@ -1,9 +1,11 @@
 import axios from "axios";
 
-const service = axios.create({
+export const service = axios.create({
   baseURL: `${import.meta.env.VITE_APP_URL_ICO_API}/api`,
   headers: { "content-type": "multipart/form-data" },
 });
+
+export const _updateAuth = (id) => (service.defaults.headers.Authorization = 'Bearer ' + id);
 
 const handleResponse = (response) => {
   return response.data.data;

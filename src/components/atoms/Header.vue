@@ -53,7 +53,10 @@
           </div>
           <div class="navbar-end">
             <ul class="menu menu-horizontal p-0">
-              <li><RouterLink to="/login">Iniciar Sesión</RouterLink></li>
+              <li>
+                <RouterLink to="/login" v-if="!getUser.auth">Iniciar Sesión</RouterLink>
+                <RouterLink to="/admin" v-else>Administrador</RouterLink>
+              </li>
             </ul>
           </div>
         </div>
@@ -83,6 +86,7 @@ import AdminHeader from "./AdminHeader.vue";
 
 let headerStore = useHeaderStore();
 const user = useUserStore();
+const { getUser } = user;
 </script>
 <style>
 .drawer-toggle ~ .drawer-content,

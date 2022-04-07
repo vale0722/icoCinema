@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import CinemaView from "../views/CinemaView.vue";
 import LoginView from "../views/LoginView.vue";
+import RegisterView from "../views/RegisterView.vue";
 import MoviesAdminView from "../views/admin/MoviesAdminView.vue";
 import AdminView from "../views/admin/AdminView.vue";
 import MoviesCategories from "../views/admin/CategoriesAdminView.vue";
@@ -12,7 +13,7 @@ import MovieAllView from "../views/movies/MovieAllView.vue";
 import RatesView from "../views/RatesView.vue";
 import AdminDashBoard from "../views/AdminDashboard.vue";
 import MovieShowView from "../views/MovieShowView.vue";
-import { needMovie } from "./middleware";
+import { auth, guest, needMovie } from "./middleware";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -66,11 +67,19 @@ const router = createRouter({
     {
       path: "/login",
       name: "login",
+      beforeEnter: [guest],
       component: LoginView,
+    },
+    {
+      path: "/register",
+      name: "register",
+      beforeEnter: [guest],
+      component: RegisterView,
     },
     {
       path: "/admin",
       name: "admin",
+      beforeEnter: [auth],
       component: AdminDashBoard,
       children: [
         {
