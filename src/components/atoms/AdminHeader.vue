@@ -27,6 +27,7 @@
           <li><RouterLink to="/admin/movies">Peliculas</RouterLink></li>
           <li><RouterLink to="/admin/shows">Funciones</RouterLink></li>
           <li><RouterLink to="/admin/rooms">Salas</RouterLink></li>
+          <li><RouterLink to="/admin/bookings">Reservas</RouterLink></li>
         </ul>
       </div>
       <RouterLink to="/" class="btn btn-ghost normal-case text-xl">
@@ -44,6 +45,7 @@
         <li><RouterLink to="/admin/movies">Peliculas</RouterLink></li>
         <li><RouterLink to="/admin/shows">Funciones</RouterLink></li>
         <li><RouterLink to="/admin/rooms">Salas</RouterLink></li>
+        <li><RouterLink to="/admin/bookings">Reservas</RouterLink></li>
       </div>
     </div>
     <div class="navbar-end">

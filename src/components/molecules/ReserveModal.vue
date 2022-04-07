@@ -2,9 +2,9 @@
   <div>
     <div class="modal-box relative bg-white w-screen h-96 text-gray-900 justify-between flex flex-col">
       <label
-        for="reserve-modal"
-        class="btn btn-sm btn-circle absolute right-2 top-2 z-50"
-        >✕</label
+          for="reserve-modal"
+          class="btn btn-sm btn-circle absolute right-2 top-2 z-50"
+      >✕</label
       >
 
       <div class="w-full text-center">
@@ -29,8 +29,8 @@
             <div class="w-full self-center h-full">
               <label class="font-medium text-sm text-gray-400">Funciones</label>
               <select
-                v-model="show"
-                class="mt-1 block w-full border-none bg-gray-100 text-gray-800 h-11 rounded-xl shadow-lg focus:ring-0 px-2"
+                  v-model="show"
+                  class="mt-1 block w-full border-none bg-gray-100 text-gray-800 h-11 rounded-xl shadow-lg focus:ring-0 px-2"
               >
                 <option selected>Seleccione una opción</option>
                 <template v-for="shows in movie.shows" :key="shows.id">
@@ -43,12 +43,20 @@
           <div class="mt-3">
             <label class="font-medium text-sm text-gray-400">Asientos</label>
             <div class="flex items-center self-center">
-              <button :disabled="quantity <= 0" @click="dismissCount" class="text-gray-500 focus:outline-none focus:text-gray-600">
-                <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <button :disabled="quantity <= 0" @click="dismissCount"
+                      class="text-gray-500 focus:outline-none focus:text-gray-600">
+                <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                     viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
               </button>
               <span class="text-gray-700 mx-2">{{ quantity }}</span>
-              <button :disabled="quantity >= show.quantity" @click="sumCount" class="text-gray-500 focus:outline-none focus:text-gray-600">
-                <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <button :disabled="quantity >= show.quantity" @click="sumCount"
+                      class="text-gray-500 focus:outline-none focus:text-gray-600">
+                <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                     viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
               </button>
             </div>
           </div>
@@ -56,14 +64,15 @@
       </div>
       <div class="flex justify-between self-center w-full">
         <div class="self-center border-gray-200">
-            <div class="flex justify-between gap-3">
-              <div>
-                <p class="font-bold text-black text-lg"> Total </p>
-              </div>
-              <p class="font-bold text-black text-lg"> $ {{ (quantity ?? 0) * 10000 }} </p>
+          <div class="flex justify-between gap-3">
+            <div>
+              <p class="font-bold text-black text-lg"> Total </p>
             </div>
+            <p class="font-bold text-black text-lg"> $ {{ (quantity ?? 0) * 10000 }} </p>
+          </div>
         </div>
-        <label class="self-center btn bg-red-800 py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105">
+        <label
+            class="self-center btn bg-red-800 py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105">
           Reservar
         </label>
       </div>
@@ -71,23 +80,45 @@
   </div>
 </template>
 
-<script setup>
-import { defineProps, ref } from "vue";
+<script>
+import {defineProps, ref} from "vue";
+import {useBookingStore} from "../../stores/booking";
 
-const show = ref({});
-const quantity = ref(0);
 
-const sumCount = () => {
-  if(quantity.value < show.value.quantity) {
-    quantity.value = quantity.value + 1;
-  }
-};
+export default {
+  setup(props, computed) {
+    const {storeBooking} = useBookingStore();
+    let name = ref("");
 
-const dismissCount = () => {
-  if(quantity.value > 0) {
-    quantity.value = quantity.value - 1;
-  }
+    const create = async () => {
+      const form = new FormData();
+      form.append("name", name.value);
+      form.append("show_id", show.value);
+      form.append("user_id", name.value);
+      form.append("quantity", quantity.value);
+      await storeBooking(form);
+      computed.emit('created')
+    };
+
+    const show = ref({});
+    const quantity = ref(0);
+
+    const sumCount = () => {
+      if (quantity.value < show.value.quantity) {
+        quantity.value = quantity.value + 1;
+      }
+    };
+
+    const dismissCount = () => {
+      if (quantity.value > 0) {
+        quantity.value = quantity.value - 1;
+      }
+    }
+
+    return {name, dismissCount, sumCount, quantity, show, create};
+  },
 }
+
 
 defineProps({
   movie: {},
