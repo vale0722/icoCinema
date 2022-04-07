@@ -114,6 +114,9 @@ export default {
     const { storeMovie } = useMoviesStore();
     const categoryStore = useCategoriesStore();
     const { categories } = storeToRefs(categoryStore);
+    const { refreshCategories } = categoryStore;
+
+    refreshCategories();
 
     let name = ref("");
     let description = ref("");

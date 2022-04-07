@@ -12,10 +12,10 @@ export const auth = async (to, from, next) => {
   const userStore = useUserStore();
   const { auth } = storeToRefs(userStore);
 
-  if(!auth.value && localStorage.getItem('user')) {
-    auth.value = JSON.parse(localStorage.getItem('user'));
+  if (!auth.value && localStorage.getItem("user")) {
+    auth.value = JSON.parse(localStorage.getItem("user"));
   }
-  if(auth.value) {
+  if (auth.value) {
     _updateAuth(auth.value.access_token);
     next();
     return;
@@ -28,8 +28,8 @@ export const guest = async (to, from, next) => {
   const userStore = useUserStore();
   const { auth } = storeToRefs(userStore);
 
-  if(!auth.value && localStorage.getItem('user')) {
-    auth.value = JSON.parse(localStorage.getItem('user'));
+  if (!auth.value && localStorage.getItem("user")) {
+    auth.value = JSON.parse(localStorage.getItem("user"));
   }
 
   !auth.value ? next() : next({ name: "admin" });

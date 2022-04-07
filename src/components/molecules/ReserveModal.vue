@@ -72,6 +72,8 @@
           </div>
         </div>
         <label
+          for="reserve-modal"
+          @click="create"
             class="self-center btn bg-red-800 py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105">
           Reservar
         </label>
@@ -81,27 +83,31 @@
 </template>
 
 <script>
-import {defineProps, ref} from "vue";
-import {useBookingStore} from "../../stores/booking";
-
+import { defineProps, ref } from "vue";
+import { useBookingStore } from "../../stores/booking";
+import { useUserStore } from "../../stores/user";
+import { storeToRefs } from "pinia/dist/pinia";
 
 export default {
+  props: {
+    movie: {},
+  },
   setup(props, computed) {
-    const {storeBooking} = useBookingStore();
-    let name = ref("");
+    const { storeBooking } = useBookingStore();
+    const storeUser = useUserStore();
+    const { auth } = storeToRefs(storeUser);
+    const show = ref({});
+    const quantity = ref(0);
 
     const create = async () => {
       const form = new FormData();
-      form.append("name", name.value);
-      form.append("show_id", show.value);
-      form.append("user_id", name.value);
+      form.append("show_id", show.value.id);
+      form.append("user_id", auth && auth.user ? auth.user.id : 1);
       form.append("quantity", quantity.value);
+      form.append("value", (quantity.value ?? 0) * 10000);
       await storeBooking(form);
-      computed.emit('created')
+      computed.emit("created");
     };
-
-    const show = ref({});
-    const quantity = ref(0);
 
     const sumCount = () => {
       if (quantity.value < show.value.quantity) {
@@ -113,11 +119,11 @@ export default {
       if (quantity.value > 0) {
         quantity.value = quantity.value - 1;
       }
-    }
+    };
 
-    return {name, dismissCount, sumCount, quantity, show, create};
+    return { dismissCount, sumCount, quantity, show, create };
   },
-}
+};
 
 
 defineProps({

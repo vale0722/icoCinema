@@ -6,24 +6,28 @@
           <thead>
             <tr>
               <th class="bg-gray-200">Nombre de la pelicula</th>
-              <th class="bg-gray-200">Fecha de la función</th>
               <th class="bg-gray-200">Numero de reservas</th>
+              <th class="bg-gray-200">Valor</th>
               <th class="bg-gray-200">Sala</th>
+              <th class="bg-gray-200">Fecha de la función</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="booking in bookingRef" :key="booking.id">
+            <tr v-for="booking in bookings" :key="booking.id">
               <td>
-                <div class="font-bold">Soy la peliucla</div>
+                <div class="font-bold">{{ booking.movie }}</div>
               </td>
               <td>
-                <div class="font-bold">Soy la funcion</div>
+                <div class="font-bold">{{ booking.quantity }}</div>
               </td>
               <td>
-                <div class="font-bold">Soy la reserva</div>
+                <div class="font-bold">{{ booking.value }}</div>
               </td>
               <td>
-                <div class="font-bold">Sala</div>
+                <div class="font-bold">{{ booking.room }}</div>
+              </td>
+              <td>
+                <div class="font-bold">{{ booking.show_day }}</div>
               </td>
             </tr>
           </tbody>
@@ -33,20 +37,20 @@
   </div>
 </template>
 
-
 <script setup>
-import { onMounted, ref } from "vue";
-import { useBookingStore} from "../stores/booking";
+import { onMounted } from "vue";
+import { useBookingStore } from "../stores/booking";
+import { storeToRefs } from "pinia/dist/pinia";
 
-const { bookings, refreshBookings} = useBookingStore();
-let bookingsRef = ref(bookings);
+const useBooking = useBookingStore();
+const { refreshBookings } = useBooking;
+const { bookings } = storeToRefs(useBooking);
 
 const refresh = async (force) => {
-  bookingsRef.value = await refreshBookings(force);
+  bookings.value = await refreshBookings(force);
 };
 
 onMounted(async () => {
   await refresh();
 });
-
 </script>
