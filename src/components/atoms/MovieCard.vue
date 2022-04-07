@@ -3,7 +3,7 @@
     <span
       class="indicator-item indicator-start badge bg-red-600 !z-40"
       v-if="withTab"
-      >Cartelera</span
+      >{{ movie.category }}</span
     >
     <div
       :class="
