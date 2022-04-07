@@ -15,11 +15,21 @@
         >Room   Ingrese los datos de la sala
         </label>
         <div class="mt-10">
-          <div>
+          <div class="mt-3">
+            <label class="text-sm text-gray-600">Número de sala</label>
             <input
               type="text"
-              placeholder="Nombre"
-              v-model="name"
+              placeholder="Número de sala"
+              v-model="number"
+              class="mt-1 block w-full border-none bg-gray-100 text-gray-800 h-11 rounded-xl shadow-lg focus:ring-0 px-2"
+            />
+          </div>
+          <div class="mt-3">
+            <label class="text-sm text-gray-600">Aforo</label>
+            <input
+              type="number"
+              placeholder="Aforo"
+              v-model="quantity"
               class="mt-1 block w-full border-none bg-gray-100 text-gray-800 h-11 rounded-xl shadow-lg focus:ring-0 px-2"
             />
           </div>
@@ -54,16 +64,18 @@ import { ref } from "vue";
 export default {
   setup(props, computed) {
     const { storeRoom } = useRoomsStore();
-    let name = ref("");
+    let number = ref("");
+    let quantity = ref("");
 
     const create = async () => {
       const form = new FormData();
-      form.append("name", name.value);
+      form.append("number", number.value);
+      form.append("quantity", quantity.value);
       await storeRoom(form);
-      computed.emit('created')
+      computed.emit("created");
     };
 
-    return { name, create };
+    return { number, quantity, create };
   },
 }
 </script>

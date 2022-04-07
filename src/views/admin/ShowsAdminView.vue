@@ -38,11 +38,6 @@
               <td>
                 <div class="flex gap-3">
                   <label
-                    class="text-gray-600 hover:text-gray-900 cursor-pointer"
-                  >
-                    <font-awesome-icon icon="eye" />
-                  </label>
-                  <label
                     for="confirmDelete-modal"
                     @click="setShow(show)"
                     class="text-gray-600 hover:text-gray-900 cursor-pointer"

@@ -19,18 +19,22 @@
             <p class="font-medium text-sm text-gray-400"> Valor unitario </p>
             <p> $10.000 </p>
           </div>
+          <div v-if="show.room">
+            <p class="font-medium text-sm text-gray-400"> Lugar </p>
+            <p> Sala {{ show.room }} </p>
+          </div>
         </div>
         <div class="space-y-2 w-full">
           <div>
             <div class="w-full self-center h-full">
               <label class="font-medium text-sm text-gray-400">Funciones</label>
               <select
+                v-model="show"
                 class="mt-1 block w-full border-none bg-gray-100 text-gray-800 h-11 rounded-xl shadow-lg focus:ring-0 px-2"
               >
-
                 <option selected>Seleccione una opción</option>
-                <template v-for="show in movie.shows" :key="show.id">
-                  <option :value="show.id">{{ show.show_day + ' ' + show.show_hour }}</option>
+                <template v-for="shows in movie.shows" :key="shows.id">
+                  <option :value="shows">{{ shows.show_day + ' ' + shows.show_hour }}</option>
                 </template>
               </select>
             </div>
@@ -39,11 +43,11 @@
           <div class="mt-3">
             <label class="font-medium text-sm text-gray-400">Asientos</label>
             <div class="flex items-center self-center">
-              <button class="text-gray-500 focus:outline-none focus:text-gray-600">
+              <button :disabled="quantity <= 0" @click="dismissCount" class="text-gray-500 focus:outline-none focus:text-gray-600">
                 <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
               </button>
-              <span class="text-gray-700 mx-2">2</span>
-              <button class="text-gray-500 focus:outline-none focus:text-gray-600">
+              <span class="text-gray-700 mx-2">{{ quantity }}</span>
+              <button :disabled="quantity >= show.quantity" @click="sumCount" class="text-gray-500 focus:outline-none focus:text-gray-600">
                 <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
               </button>
             </div>
@@ -56,7 +60,7 @@
               <div>
                 <p class="font-bold text-black text-lg"> Total </p>
               </div>
-              <p class="font-bold text-black text-lg"> $20.000 </p>
+              <p class="font-bold text-black text-lg"> $ {{ (quantity ?? 0) * 10000 }} </p>
             </div>
         </div>
         <label class="self-center btn bg-red-800 py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105">
@@ -68,7 +72,22 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
+import { defineProps, ref } from "vue";
+
+const show = ref({});
+const quantity = ref(0);
+
+const sumCount = () => {
+  if(quantity.value < show.value.quantity) {
+    quantity.value = quantity.value + 1;
+  }
+};
+
+const dismissCount = () => {
+  if(quantity.value > 0) {
+    quantity.value = quantity.value - 1;
+  }
+}
 
 defineProps({
   movie: {},

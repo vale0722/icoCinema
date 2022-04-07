@@ -12,31 +12,27 @@
             <tr>
               <th class="bg-gray-200">Sala</th>
               <th class="bg-gray-200 text-center">Aforo</th>
+              <th class="bg-gray-200 text-center">Fecha de creación</th>
+              <th class="bg-gray-200 text-center">Fecha de actualización</th>
               <th class="bg-gray-200"></th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="room in roomRef" :key="room.id">
+            <tr v-for="room in roomsRef" :key="room.id">
               <td>
                 <div class="font-bold">{{ room.id }}</div>
               </td>
               <td class="text-center">
-                {{ room.capacity }}
+                {{ room.quantity }}
+              </td>
+              <td class="text-center">
+                {{ room.createdAt }}
+              </td>
+              <td class="text-center">
+                {{ room.updatedAt }}
               </td>
               <td>
                 <div class="flex gap-3">
-                  <label
-                    class="text-gray-600 hover:text-gray-900 cursor-pointer"
-                  >
-                    <font-awesome-icon icon="eye" />
-                  </label>
-                  <label
-                    for="editRoom-modal"
-                    @click="setRoom(room)"
-                    class="text-gray-600 hover:text-gray-900 cursor-pointer"
-                  >
-                    <font-awesome-icon icon="pen" />
-                  </label>
                   <label
                     for="confirmDelete-modal"
                     @click="setRoom(room)"
@@ -59,11 +55,6 @@
     <AddRoomModal @created="refresh(true)" />
   </label>
 
-  <input type="checkbox" id="editRoom-modal" class="modal-toggle" />
-  <label for="editRoom-modal" class="modal cursor-pointer">
-    <EditRoomModal @updated="refresh(true)" />
-  </label>
-
   <input type="checkbox" id="confirmDelete-modal" class="modal-toggle" />
   <label for="confirmDelete-modal" class="modal cursor-pointer">
     <ConfirmDeleteModal @deleted="refresh(true)" />
@@ -72,10 +63,9 @@
 
 <script setup>
 import AddRoomModal from "../../components/AddRoomModal.vue";
-import EditRoomModal from "../../components/EditRoomModal.vue";
 import ConfirmDeleteModal from "../../components/ConfirmDeleteModal.vue";
 import { onMounted, ref } from "vue";
-import { useRoomStore } from "../../stores/rooms";
+import { useRoomsStore } from "../../stores/rooms";
 const { rooms, refreshRooms, setRoomActive } = useRoomsStore();
 let roomsRef = ref(rooms);
 
@@ -86,6 +76,6 @@ const refresh = async (force) => {
 const setRoom = async (room) => await setRoomActive(room);
 
 onMounted(async () => {
-   await refresh();
+  await refresh();
 });
 </script>

@@ -14,6 +14,7 @@ import RatesView from "../views/RatesView.vue";
 import AdminDashBoard from "../views/AdminDashboard.vue";
 import MovieShowView from "../views/MovieShowView.vue";
 import ShowsView from "../views/admin/ShowsAdminView.vue";
+import RoomView from "../views/admin/RoomsAdminView.vue";
 import { auth, guest, needMovie } from "./middleware";
 
 const router = createRouter({
@@ -110,7 +111,14 @@ const router = createRouter({
           components:{
             admin: ShowsView,
           },
-        }
+        },
+        {
+          path: "rooms",
+          name: "Salas",
+          components: {
+            admin: RoomView,
+          },
+        },
       ],
     },
     {

@@ -48,6 +48,18 @@
               </template>
             </select>
           </div>
+          <div class="mt-3">
+            <label class="text-sm text-gray-600">Sala</label>
+            <select
+              class="mt-1 block w-full border-none bg-gray-100 text-gray-800 h-11 rounded-xl shadow-lg focus:ring-0 px-2"
+              v-model="room_id"
+            >
+              <option selected disabled>Seleccione una sala</option>
+              <template v-for="room in rooms" :key="room.id">
+                <option :value="room.id">{{ room.number }}</option>
+              </template>
+            </select>
+          </div>
 
           <div class="mt-7">
             <label
@@ -77,29 +89,35 @@ import { useShowsStore } from "../stores/shows";
 import { ref } from "vue";
 import { useMoviesStore } from "../stores/movies";
 import { storeToRefs } from "pinia/dist/pinia";
+import { useRoomsStore } from "../stores/rooms";
 
 export default {
   setup(props, computed) {
     const { storeShow } = useShowsStore();
     const movieStore = useMoviesStore();
+    const roomsStore = useRoomsStore();
     const { movies } = storeToRefs(movieStore);
+    const { rooms } = storeToRefs(roomsStore);
+    const { refreshMovies } = movieStore;
+    const { refreshRooms } = roomsStore;
 
     let show_day = ref("");
     let show_hour = ref("");
     let movie_id = ref("");
     let room_id = ref("");
 
+    refreshMovies();
+    refreshRooms();
+
     const create = async () => {
       const form = new FormData();
       form.append("show_day", show_day.value);
       form.append("show_hour", show_hour.value);
       form.append("movie_id", movie_id.value);
-      form.append("room_id", 1);
+      form.append("room_id", room_id.value);
       await storeShow(form);
       computed.emit("created");
     };
-
-    console.log(movies);
 
     return {
       show_day,
@@ -107,6 +125,7 @@ export default {
       movie_id,
       room_id,
       movies,
+      rooms,
       create,
     };
   },
