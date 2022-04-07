@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import CinemaView from "../views/CinemaView.vue";
 import LoginView from "../views/LoginView.vue";
-import AdminView from "../views/admin/MoviesAdminView.vue";
+import MoviesAdminView from "../views/admin/MoviesAdminView.vue";
+import AdminView from "../views/admin/AdminView.vue";
 import MoviesCategories from "../views/admin/CategoriesAdminView.vue";
 import MovieNewsView from "../views/movies/MovieNewsView.vue";
 import MovieBillBoardView from "../views/movies/MovieBillBoardView.vue";
@@ -73,10 +74,17 @@ const router = createRouter({
       component: AdminDashBoard,
       children: [
         {
+          path: "",
+          name: "Admin",
+          components: {
+            admin: AdminView,
+          },
+        },
+        {
           path: "movies",
           name: "Peliculas",
           components: {
-            admin: AdminView,
+            admin: MoviesAdminView,
           },
         },
         {

@@ -44,11 +44,11 @@
             />
           </div>
           <div class="m-8">
-            <button
+            <RouterLink
               class="uppercase block w-full p-2 text-md rounded-full bg-red-600 hover:bg-red-700 focus:outline-none hover:scale-110 duration-200"
-            >
+              to="/admin">
               Ingresar
-            </button>
+            </RouterLink>
           </div>
 
           <div

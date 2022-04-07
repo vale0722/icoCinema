@@ -78,7 +78,7 @@
               <span class="badge">Nuevo</span>
             </a>
           </li>
-          <li><a>Cerrar Sesión</a></li>
+          <li><RouterLink to="/">Cerrar Sesión</RouterLink></li>
         </ul>
       </div>
     </div>

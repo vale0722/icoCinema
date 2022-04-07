@@ -1,8 +1,11 @@
 <template>
   <RouterView name="admin" v-slot="{ Component }">
-    <AdminTemplate :title="$route.name">
+    <AdminTemplate :title="$route.name" v-if="$route.name !== 'Admin'">
       <component data-aos="fade-right" :is="Component" />
     </AdminTemplate>
+    <template v-else>
+      <component data-aos="fade-right" :is="Component" />
+    </template>
   </RouterView>
 </template>
 

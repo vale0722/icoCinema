@@ -49,7 +49,6 @@
                   </li>
                 </ul>
               </li>
-              <li><RouterLink to="/admin">Administrador</RouterLink></li>
             </ul>
           </div>
           <div class="navbar-end">
